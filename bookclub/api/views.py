@@ -15,3 +15,9 @@ def addItem(request):
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+def delItem(request):
+    books = Book.objects.all().delete()
+    books.save()
+    return Response(books)
